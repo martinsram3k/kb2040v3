@@ -40,44 +40,8 @@
 // QMK automaticky mapuje tento pin na matici kláves
 #define ENCODER_0_SW_PIN GP8
 
-// 5. Směr otáčení
-// Určuje, zda se směr počítání (+/-) má obrátit.
-// Zkus, zda to funguje; pokud se ti směr otáčení a reakce nezdají, odkomentuj:
-// #define ENCODER_DIRECTION_FLIP
-
-// V souboru config.h
-
-// 1. Povolení RGB Matrix
-
-
-// 2. Definice datového pinu (DIN)
-// Používá pin GP9, jak jsi uvedl.
-#define RGB_DI_PIN GP9 
-#define WS2812_DI_PIN RGB_DI_PIN
-
-#define WS2812_DRIVER vendor 
-
-// --- Konfigurace RGB Matrix ---
-
-#define RGB_MATRIX_COLOR_ORDER RGB_MATRIX_GRB
-
-// 3. Počet LED diod
-// V tvém schématu je 6 diod (6x WS2812B).
-#define RGB_MATRIX_LED_COUNT 6 
-
-// 4. Pořadí barev
-// Typicky pro WS2812B.
-#define RGB_MATRIX_COLOR_ORDER RGB_MATRIX_GRB
-
-// 5. Typ matice
-// Full Feature Matrix
-#define RGB_MATRIX_TYPE RGB_MATRIX_KEYPRESSES 
-
-// 6. Volitelné: Jas a kroky pro ovládání
-#define RGB_MATRIX_VAL_MAX 255
-#define RGB_MATRIX_HUE_STEP 8
-#define RGB_MATRIX_SAT_STEP 8
-#define RGB_MATRIX_VAL_STEP 8
+#define WS2812_DI_PIN GP9
+#define RGBLIGHT_LED_COUNT 6 // Počet LED diod na klávesnici
 
 /*
  * POZNÁMKA K NAPÁJENÍ: 
