@@ -18,26 +18,9 @@
 #define BOOTMAGIC_ROW 0 // Řádek pro Bootmagic (tlačítko v levém horním rohu)
 #define BOOTMAGIC_COLUMN 0 // Sloupec pro Bootmagic (tlačítko v levém horním rohu)
    
-// V souboru config.h
+#define ENCODER_A_PINS { GP7 }
+#define ENCODER_B_PINS { GP6 }
 
-// 1. Povolení podpory pro encodery
-#define ENCODERS_ENABLE
-
-// 2. Definice počtu encoderů
-// V tvém případě je to jen jeden.
-#define ENCODER_COUNT 1
-
-// 3. Definice pinů pro první (a jediný) encoder
-
-// Definice pinu CLK (fáze A) pro Encoder 0
-#define ENCODER_0_PIN_A GP6 
-// Definice pinu DT (fáze B) pro Encoder 0
-#define ENCODER_0_PIN_B GP7
-
-// 4. (Volitelné) Povolení snímače (tlačítka) na encoderu
-
-// Definice pinu pro tlačítko SW (Switch) na Encoderu 0
-// QMK automaticky mapuje tento pin na matici kláves
 #define ENCODER_0_SW_PIN GP8
 
 #define WS2812_DI_PIN GP9

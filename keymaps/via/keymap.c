@@ -2,6 +2,16 @@
 
 #include "hardware/gpio.h"
 
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { // první enkodér
+        if (clockwise) {
+            tap_code(KC_LEFT); // otočení po směru hodinových ručiček - zvýšení hlasitosti
+        } else {
+            tap_code(KC_RIGHT); // otočení proti směru hodinových ručiček - snížení hlasitosti
+        }
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrstev
 
 // Definice vrstev pro keymap.c s KAZDOU klávesou nastavenou na KC_NO.
@@ -44,17 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
     KC_NO, KC_NO, KC_NO, KC_NO  // Row 3
 )
 
+
+
         
 };
 
-// V souboru keymap.c (obvykle v části po definici vrstev)
 
-// Pole, které definuje funkce pro otáčení encoderu na každé vrstvě
-const uint16_t PROGMEM encoder_map[][2] = {
-    // [vrstva] = { otoceni proti smeru hod. rucice, otoceni po smeru hod. rucice }
-    
-    [0] = { KC_VOLD, KC_VOLU },    // Vrstva 0: Ovládání hlasitosti (Dolů, Nahoru)
-    [1] = { KC_MPRV, KC_MNXT },    // Vrstva 1: Předchozí/Další stopa
-    [3] = { KC_NO, KC_NO }         // Vrstva 3: Žádná funkce
-};
 
