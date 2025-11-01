@@ -2,15 +2,19 @@
 
 #include "hardware/gpio.h"
 
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { // první enkodér
         if (clockwise) {
-            tap_code(KC_LEFT); // otočení po směru hodinových ručiček - zvýšení hlasitosti
+            tap_code(KC_VOLU); // otočení po směru hodinových ručiček - zvýšení hlasitosti
         } else {
-            tap_code(KC_RIGHT); // otočení proti směru hodinových ručiček - snížení hlasitosti
+            tap_code(KC_VOLD); // otočení proti směru hodinových ručiček - snížení hlasitosti
         }
     }
+    return true;
 }
+
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrstev
 

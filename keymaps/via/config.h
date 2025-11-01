@@ -23,9 +23,10 @@
 
 #define ENCODER_0_SW_PIN GP8
 
+
 #define WS2812_DI_PIN GP9
 #define RGBLIGHT_LED_COUNT 6 // Počet LED diod na klávesnici
-
+#define WS2812_RGBW
 /*
  * POZNÁMKA K NAPÁJENÍ: 
  * Ujisti se, že zdroj raw-LED zvládne napájet 6 diod. 
