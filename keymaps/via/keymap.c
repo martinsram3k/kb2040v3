@@ -4,7 +4,7 @@
 #define CYCLE_LAYER_TIMEOUT 2000
 
 // Komentář: Globální stavové proměnné
-int cycle_layer = 0; // 0 = standardní režim, 1 = režim cyklování vrstev (okno je otevřené)
+int cycle_layer = 1; // 0 = standardní režim, 1 = režim cyklování vrstev (okno je otevřené)
 uint16_t cycle_layer_timer = 0; 
 
 // Komentář: Pomocná proměnná pro zjištění, zda došlo k otočení/změně vrstvy v rámci okna
