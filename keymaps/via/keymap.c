@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_LAYER_MODE  // Row 3
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A  // Row 3
 ),
 
      
@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_LAYER_MODE  // Row 3
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A  // Row 3
 ),
 
        
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
     KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_LAYER_MODE // Row 3
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A // Row 3
 )
 
 
