@@ -2,7 +2,7 @@
     "name" : "TYRAMODS_macropad",
     "vendorId" : "0x4D16",
     "productId" : "0x0002",
-    "matrix": {"rows": 4, "cols": 4},
+    "matrix": {"rows": 4, "cols": 5},
 
  "keycodes": ["qmk_lighting"],
   "menus": [

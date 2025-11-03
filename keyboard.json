@@ -23,7 +23,7 @@
     },
 
     "matrix_pins": {
-    "cols": ["GP26", "GP27", "GP28", "GP29" , "GP8" ],
+    "cols": ["GP26", "GP27", "GP28", "GP29"],
     "rows": ["GP18", "GP20", "GP19" , "GP10"]
 },
     "diode_direction": "COL2ROW",
@@ -85,10 +85,7 @@
             {"matrix": [3, 0], "x": 0, "y": 3},
             {"matrix": [3, 1], "x": 1, "y": 3},
             {"matrix": [3, 2], "x": 2, "y": 3},
-            {"matrix": [3, 3], "x": 3, "y": 3},
-                
-            {"matrix": [3, 4], "x": 4, "y": 3}
-
+            {"matrix": [3, 3], "x": 3, "y": 3}
         ]
     }
 }
