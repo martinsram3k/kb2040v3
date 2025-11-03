@@ -16,7 +16,8 @@
 #define ENCODER_A_PINS { GP7 }
 #define ENCODER_B_PINS { GP6 }
 
-
+#define MATRIX_ROWS 4 // 4 řádky (0-3)
+#define MATRIX_COLS 5 // 5 sloupců (0-4)
 
 #define WS2812_DI_PIN GP9
 #define RGBLIGHT_LED_COUNT 6 // Počet LED diod na klávesnici

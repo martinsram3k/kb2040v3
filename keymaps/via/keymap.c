@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+
 // Komentář: Definice časového limitu (2 sekundy = 2000 ms)
 #define CYCLE_LAYER_TIMEOUT 2000
 
@@ -149,39 +150,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
 // Definice vrstev pro keymap.c pro 4x4 makropad.
 // Všechny klávesy jsou nastaveny na KC_NO (No Operation).
 
-[0] = LAYOUT_martin_4x4( // základní vrstva
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_A // Row 3
+// DŮLEŽITÉ: Nyní má layout 20 pozic (4 řádky * 5 sloupců)
+// POZOR: Musíš použít NOVÝ NÁZEV layoutu a PŘESNĚ 20 argumentů!
+
+[0] = LAYOUT_martin_4x5( 
+    // Row 0 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 1 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 2 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 3 (5 kláves) - Zde je enkodér na poslední pozici
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A
 ),
 
         
 
-[1] = LAYOUT_martin_4x4( // druhá vrstva
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_A  // Row 3
+[1] = LAYOUT_martin_4x5( // druhá vrstva
+     // Row 0 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 1 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 2 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 3 (5 kláves) - Zde je enkodér na poslední pozici
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A
 ),
 
      
 
 
-[2] = LAYOUT_martin_4x4( // třetí vrstva
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_A  // Row 3
+[2] = LAYOUT_martin_4x5( // třetí vrstva
+    // Row 0 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 1 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 2 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 3 (5 kláves) - Zde je enkodér na poslední pozici
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A
 ),
 
        
 
-[3] = LAYOUT_martin_4x4( // settings vrstva
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 0
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 1
-    KC_NO, KC_NO, KC_NO, KC_NO, // Row 2
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_A // Row 3
+[3] = LAYOUT_martin_4x5( // settings vrstva
+    // Row 0 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 1 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 2 (5 kláves)
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    // Row 3 (5 kláves) - Zde je enkodér na poslední pozici
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_A
 )
 
 
