@@ -5,6 +5,7 @@
 #define CYCLE_LAYER_TIMEOUT 2000
 
 // Komentář: Globální stavové proměnné
+int rgb_mode_before_cycle = RGBLIGHT_MODE_STATIC_LIGHT; // Uložení předchozího režimu RGB podsvícení
 int cycle_layer = 0; // 0 = standardní režim, 1 = režim cyklování vrstev (okno je otevřené)
 uint16_t cycle_layer_timer = 0; 
 
@@ -39,6 +40,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // Komentář: Pokud je okno zavřené, otevřeme ho
                 if (cycle_layer == 0) {
                     cycle_layer = 1; 
+                    rgblight_mode(RGBLIGHT_MODE_ALTERNATING); // Nastavíme efekt "had"
+                    
                     layer_was_cycled = false; // Resetujeme příznak pro detekci "normální funkce"
                 }
                 
@@ -54,6 +57,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       if (record->event.pressed) {
         rgblight_step();
+        rgb_mode_before_cycle = rgblight_get_mode();
 
       }
       return false;
@@ -74,6 +78,7 @@ void matrix_scan_user(void) {
             
             // Komentář: Čas vypršel, zavři okno/opusť režim
             cycle_layer = 0; 
+            rgblight_mode(rgb_mode_before_cycle); // Vrátíme se k normálnímu režimu podsvícení
             
             // Komentář: Zde provedeme "normální funkci" stisku, pokud nedošlo k otočení enkodéru
             if (layer_was_cycled == false) {
