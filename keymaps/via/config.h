@@ -21,6 +21,12 @@
 #define ENCODER_A_PINS { GP7 }
 #define ENCODER_B_PINS { GP6 }
 
+#define RGBLIGHT_EFFECT_SNAKE_LENGTH 2
+
+#define RGBLIGHT_SLEEP 20000 
+#define RGBLIGHT_DEFAULT_HUE 128
+
+
 #define WS2812_DI_PIN GP9
 #define RGBLIGHT_LED_COUNT 6 // Počet LED diod na klávesnici
 /*

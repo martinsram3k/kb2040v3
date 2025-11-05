@@ -49,6 +49,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
+
+                case QK_UNDERGLOW_MODE_NEXT:
+      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
+      if (record->event.pressed) {
+        rgblight_step();
+
+      }
+      return false;
     }
     // Komentář: PRO VŠECHNY OSTATNÍ KLÁVESY (KC_A, KC_ENT atd.) vracíme TRUE.
     // Tím zajistíme, že QMK je normálně zpracuje.
@@ -127,10 +135,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
         if (clockwise) {
             // Komentář: Otáčení doprava -> Zvýšit hlasitost
-            tap_code(KC_VOLU);
+            tap_code(KC_UP);
         } else {
             // Komentář: Otáčení doleva -> Snížit hlasitost
-            tap_code(KC_VOLD);
+            tap_code(KC_DOWN);
         }
         
         // Komentář: Událost zpracována, nepokračovat ve výchozím chování
@@ -179,9 +187,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrste
        
 [3] = LAYOUT_martin_4x4(
     KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,
-    KC_A, KC_A, KC_A, KC_A,
-    KC_A, KC_A, KC_A, KC_A,
-    KC_A, KC_A, KC_A, KC_A
+    QK_UNDERGLOW_TOGGLE, QK_UNDERGLOW_SPEED_UP, QK_UNDERGLOW_SPEED_DOWN, KC_A,
+    QK_UNDERGLOW_MODE_NEXT,  QK_UNDERGLOW_MODE_PREVIOUS, QK_UNDERGLOW_VALUE_UP, QK_UNDERGLOW_VALUE_DOWN,
+    QK_UNDERGLOW_HUE_UP, QK_UNDERGLOW_HUE_DOWN, QK_UNDERGLOW_SATURATION_UP, QK_UNDERGLOW_SATURATION_DOWN
 )
 
 
@@ -380,7 +388,28 @@ bool oled_task_user(void) {
 
 #endif // OLED_ENABLE
 
-} 
+}
 
 
 
+
+// How long (in milliseconds) to wait between animation steps for each of the "Solid color breathing" animations
+const uint8_t RGBLED_BREATHING_INTERVALS[] PROGMEM = {30, 20, 10, 5};
+
+// How long (in milliseconds) to wait between animation steps for each of the "Cycling rainbow" animations
+const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {120, 60, 30};
+
+// How long (in milliseconds) to wait between animation steps for each of the "Swirling rainbow" animations
+const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {100, 50, 20};
+
+// How long (in milliseconds) to wait between animation steps for each of the "Snake" animations
+const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {100, 50, 20};
+
+// How long (in milliseconds) to wait between animation steps for each of the "Knight" animations
+const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {127, 63, 31};
+
+// How long (in milliseconds) to wait between animation steps for each of the "Twinkle" animations
+const uint8_t RGBLED_TWINKLE_INTERVALS[] PROGMEM = {50, 25, 10};
+
+// These control which hues are selected for each of the "Static gradient" modes
+const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {255, 170, 127, 85, 64};
