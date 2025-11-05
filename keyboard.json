@@ -46,6 +46,26 @@
         }
     },
    
+"menus": [
+  {
+    "label": "Lighting",
+    "content": [
+      {
+        "label": "Backlight",
+        "content": [
+          {
+            "label": "Brightness",
+            "type": "range",
+            "options": [0, 255],
+            "content": ["id_qmk_rgb_lighting_value", 3, 1]
+          }
+        
+        ]
+      }
+    ]
+  }
+],
+
 "layouts": {
     "LAYOUT_martin_4x4": { 
         "layout": [
