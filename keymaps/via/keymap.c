@@ -79,15 +79,10 @@ void matrix_scan_user(void) {
             // Komentář: Čas vypršel, zavři okno/opusť režim
             cycle_layer = 0; 
             rgblight_mode(rgb_mode_before_cycle); // Vrátíme se k normálnímu režimu podsvícení
-            
-            // Komentář: Zde provedeme "normální funkci" stisku, pokud nedošlo k otočení enkodéru
-            if (layer_was_cycled == false) {
-                // Komentář: PŘÍKLAD NORMÁLNÍ FUNKCE (zde jako Enter)
-                tap_code(KC_ENT); 
+         
             }
         }
     }
-}
 
 
 // Komentář: Funkce volaná při otáčení enkodéru.

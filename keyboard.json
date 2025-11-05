@@ -39,7 +39,7 @@
             "snake": true,
             "knight": false,
             "christmas": false,
-            "static_gradient": true,
+            "static_gradient": false,
             "rgb_test": false,
             "alternating": true,
             "twinkle": true
