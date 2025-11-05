@@ -145,43 +145,43 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrstev
 
-// Definice vrstev pro keymap.c s KAZDOU klávesou nastavenou na KC_NO.
+// Definice vrstev pro keymap.c s KAZDOU klávesou nastavenou na KC_A.
 
 // Definice vrstev pro keymap.c pro 4x4 makropad.
-// Všechny klávesy jsou nastaveny na KC_NO (No Operation).
+// Všechny klávesy jsou nastaveny na KC_A (No Operation).
 
 // DŮLEŽITÉ: Nyní má layout 20 pozic (4 řádky * 5 sloupců)
 // POZOR: Musíš použít NOVÝ NÁZEV layoutu a PŘESNĚ 20 argumentů!
 
 [0] = LAYOUT_martin_4x4( 
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_LAYER_MODE
+    KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A
 ),
 
-        
+           
 [1] = LAYOUT_martin_4x4(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+    KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A
 ),
 
      
 [2] = LAYOUT_martin_4x4(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+    KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A
 ),
 
        
 [3] = LAYOUT_martin_4x4(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+    KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A,
+    KC_A, KC_A, KC_A, KC_A
 )
 
 
