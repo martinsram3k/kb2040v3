@@ -156,10 +156,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
         if (clockwise) {
             // Komentář: Otáčení doprava -> Zvýšit hlasitost
-            tap_code(KC_UP);
+            tap_code(KC_LEFT);
         } else {
             // Komentář: Otáčení doleva -> Snížit hlasitost
-            tap_code(KC_DOWN);
+            tap_code(KC_RIGHT);
         }
         
         // Komentář: Událost zpracována, nepokračovat ve výchozím chování
