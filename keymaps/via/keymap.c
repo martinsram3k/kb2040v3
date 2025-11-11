@@ -44,6 +44,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 // Komentář: Při stisku vždy resetujeme časovač (udrží nebo otevře okno)
                 cycle_layer_timer = timer_read(); 
+                rgb_mode_before_cycle = rgblight_get_mode();
                 
                 // Komentář: Pokud je okno zavřené, otevřeme ho
                 if (cycle_layer == 0) {
@@ -65,7 +66,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       if (record->event.pressed) {
         rgblight_step();
-        rgb_mode_before_cycle = rgblight_get_mode();
 
       }
       return false;
@@ -76,7 +76,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       if (record->event.pressed) {
         rgblight_step_reverse();
-        rgb_mode_before_cycle = rgblight_get_mode();
 
       }
       return false;
@@ -90,6 +89,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Komentář: Funkce spouštěná QMK neustále. Kontroluje časový limit okna.
 void matrix_scan_user(void) {
+
     
     // Komentář: Kontrola, zda je cyklovací režim aktivní
     if (cycle_layer == 1) { 
@@ -103,8 +103,8 @@ void matrix_scan_user(void) {
          
             }
         }
-    }
 
+}
 
 // Komentář: Funkce volaná při otáčení enkodéru.
 // ... [Globální proměnné a ostatní funkce] ...
