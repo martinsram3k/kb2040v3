@@ -1,27 +1,11 @@
 {
-    "name" : "TYRAMODS_macropad",
-    "vendorId" : "0x4D16",
-    "productId" : "0x0002",
+    "name" : "TYRAMODS_FLOW",
+    "vendorId" : "0x4657",
+    "productId" : "0x0001",
     "matrix": {"rows": 4, "cols": 5},
-"menus": [
-  {
-    "label": "Lighting",
-    "content": [
-      {
-        "label": "Backlight",
-        "content": [
-          {
-            "label": "Brightness",
-            "type": "range",
-            "options": [0, 255],
-            "content": ["id_qmk_rgb_lighting_value", 3, 1]
-          }
-        
-        ]
-      }
-    ]
-  }
-],
+
+"menus": ["qmk_rgblight"],
+  "keycodes": ["qmk_lighting"],
 
     "layouts": {
         "keymap": [

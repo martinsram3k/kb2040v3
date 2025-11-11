@@ -1,6 +1,6 @@
 #ifdef VIA_ENABLE  // Povolené via
-#define VIA_UID_VENDOR_ID 0x4D16 
-#define VIA_UID_PRODUCT_ID 0x0002
+#define VIA_UID_VENDOR_ID 0x4657
+#define VIA_UID_PRODUCT_ID 0x0001
 
 #define OLED_DRIVER_ENABLE yes
 #define OLED_DISPLAY_ADDRESS 0x3C  // Adresa I2C displeje OLED

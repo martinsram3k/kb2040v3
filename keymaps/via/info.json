@@ -1,6 +1,6 @@
 {
-    "manufacturer": "martin_sramek",
-    "keyboard_name": "TYRAMODS_macropad",
+    "manufacturer": "TYRA",
+    "keyboard_name": "TYRAMODS_FLOW",
     "maintainer": "martin_sramek",
     "board": "GENERIC_RP_RP2040",
     "bootloader": "rp2040",
@@ -20,8 +20,8 @@
     "url": "https://github.com/martinsram3k",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0002",
-        "vid": "0x4D16"
+        "pid": "0x0001",
+        "vid": "0x4657"
     },
     "layouts": {
         "LAYOUT_martin_3x3": {

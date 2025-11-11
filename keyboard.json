@@ -1,19 +1,21 @@
 {
-    "manufacturer": "martin_sramek",
-    "keyboard_name": "TYRAMODS_macropad",
-    "name": "TYRAMODS_macropad",
+    "manufacturer": "TYRA",
+    "keyboard_name": "TYRAMODS FLOW",
+    "name": "TYRAMODS FLOW",
     "url": "https://github.com/martinsram3k",
     "maintainer": "martin_sramek",
     "processor": "RP2040",
     "bootloader": "rp2040",
     "board": "GENERIC_RP_RP2040",
-    "pid": "0x0002",
-    "vid": "0x4D16",
+    "pid": "0x0001",
+    "vid": "0x4657",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0002",
-        "vid": "0x4D16"
+        "pid": "0x0001",
+        "vid": "0x4657"
     },
+
+    
   
     "qmk": {
         "locking": {
@@ -46,25 +48,9 @@
         }
     },
    
-"menus": [
-  {
-    "label": "Lighting",
-    "content": [
-      {
-        "label": "Backlight",
-        "content": [
-          {
-            "label": "Brightness",
-            "type": "range",
-            "options": [0, 255],
-            "content": ["id_qmk_rgb_lighting_value", 3, 1]
-          }
-        
-        ]
-      }
-    ]
-  }
-],
+
+
+
 
 "layouts": {
     "LAYOUT_martin_4x4": { 
