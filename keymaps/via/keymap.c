@@ -1,19 +1,19 @@
 #include QMK_KEYBOARD_H
 
 
-// Komentář: Definice časového limitu (2 sekundy = 2000 ms)
+
 #define CYCLE_LAYER_TIMEOUT 2000
 
-// Komentář: Globální stavové proměnné
+
 int display_design = 0; 
-int rgb_mode_before_cycle = RGBLIGHT_MODE_STATIC_LIGHT; // Uložení předchozího režimu RGB podsvícení
-int cycle_layer = 0; // 0 = standardní režim, 1 = režim cyklování vrstev (okno je otevřené)
+int rgb_mode_before_cycle = RGBLIGHT_MODE_STATIC_LIGHT; 
+int cycle_layer = 0;
 uint16_t cycle_layer_timer = 0; 
 
-// Komentář: Pomocná proměnná pro zjištění, zda došlo k otočení/změně vrstvy v rámci okna
+
 bool layer_was_cycled = false; 
 
-// Komentář: Proměnná pro uložení poslední vrstvy před přechodem na speciální vrstvu
+
 uint8_t previous_base_layer = 0; 
 
 // Komentář: Rozsah vrstev k cyklování (0, 1, 2)
@@ -24,13 +24,12 @@ uint8_t previous_base_layer = 0;
 // Komentář: Vlastní klávesový kód pro stisk enkodéru, který MUSÍ být v keymapě
 enum key_codes {
     KC_LAYER_MODE = QK_USER,
-    KC_DISPLAY_DESIGN, // keycode pro zmeniu designu displeje
-    // KC_L_PLUS, KC_L_MINUS - tyto už nepotřebujeme
+    KC_DISPLAY_DESIGN, 
+
 };
 
 
-// Komentář: Funkce pro zpracování stisku/uvolnění klávesy. Řídí aktivaci okna.
-// Komentář: Funkce pro zpracování stisku/uvolnění klávesy. Řídí aktivaci okna.
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
@@ -42,28 +41,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
         case KC_LAYER_MODE: 
             if (record->event.pressed) {
-                // Komentář: Při stisku vždy resetujeme časovač (udrží nebo otevře okno)
+
                 cycle_layer_timer = timer_read(); 
                 rgb_mode_before_cycle = rgblight_get_mode();
                 
-                // Komentář: Pokud je okno zavřené, otevřeme ho
+
                 if (cycle_layer == 0) {
                     cycle_layer = 1; 
-                    rgblight_mode(RGBLIGHT_MODE_ALTERNATING); // Nastavíme efekt "had"
+                    rgblight_mode(RGBLIGHT_MODE_ALTERNATING); // Nastavíme efekt "alternating"
                     
-                    layer_was_cycled = false; // Resetujeme příznak pro detekci "normální funkce"
+                    layer_was_cycled = false;
                 }
                 
-                // Komentář: TUTO KLÁVESU ZPRACOVÁVÁME SAMI, BLOKUJEME QMK
+
                 return false; 
             } else { // key released
-                // Komentář: Tuto klávesu BLOKUJEME i při uvolnění
+
                 return false;
             }
             break;
 
                 case QK_UNDERGLOW_MODE_NEXT:
-      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
+
       if (record->event.pressed) {
         rgblight_step();
 
@@ -73,31 +72,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
       case QK_UNDERGLOW_MODE_PREVIOUS:
-      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
+
       if (record->event.pressed) {
         rgblight_step_reverse();
 
       }
       return false;
 
-        // Můžeme přidat další vlastní klávesové kódy zde, pokud je potřeba
+
     }
-    // Komentář: PRO VŠECHNY OSTATNÍ KLÁVESY (KC_A, KC_ENT atd.) vracíme TRUE.
-    // Tím zajistíme, že QMK je normálně zpracuje.
+
+
     return true; 
 }
 
-// Komentář: Funkce spouštěná QMK neustále. Kontroluje časový limit okna.
+
 void matrix_scan_user(void) {
 
     
-    // Komentář: Kontrola, zda je cyklovací režim aktivní
+
     if (cycle_layer == 1) { 
         
-        // Komentář: Kontroluje, zda uplynulo více než 2000 ms od poslední interakce (stisk/otočení)
+
         if (timer_elapsed(cycle_layer_timer) > CYCLE_LAYER_TIMEOUT) {
             
-            // Komentář: Čas vypršel, zavři okno/opusť režim
+
             cycle_layer = 0; 
             rgblight_mode(rgb_mode_before_cycle); // Vrátíme se k normálnímu režimu podsvícení
          
@@ -106,21 +105,17 @@ void matrix_scan_user(void) {
 
 }
 
-// Komentář: Funkce volaná při otáčení enkodéru.
-// ... [Globální proměnné a ostatní funkce] ...
-
-// Komentář: Funkce volaná při otáčení enkodéru.
 bool encoder_update_user(uint8_t index, bool clockwise) {
     
     if (index == 0) { 
         
-        // Komentář: REŽIM 1: Cyklování vrstev (aktivní po stisku)
+
         if (cycle_layer == 1) {
             
-            cycle_layer_timer = timer_read(); // Komentář: Reset časovače (prodlouží okno)
-            layer_was_cycled = true;          // Komentář: Nastavíme příznak, že došlo k rotaci
+            cycle_layer_timer = timer_read(); 
+            layer_was_cycled = true;          
             
-            // Logika pro cyklickou ZMĚNU VRSTEV (s obrácenou logikou otáčení)
+
             uint8_t current_layer = get_highest_layer(layer_state); 
             uint8_t next_layer = current_layer;
 
@@ -129,14 +124,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             }
 
             if (clockwise) {
-                // Otáčení DOPRAVA -> SNÍŽENÍ vrstvy (2 -> 1 -> 0 -> 2)
+
                 if (next_layer == LAYER_CYCLE_START) { 
                     next_layer = LAYER_CYCLE_END - 1; 
                 } else {
                     next_layer--; 
                 }
             } else {
-                // Otáčení DOLEVA -> ZVÝŠENÍ vrstvy (0 -> 1 -> 2 -> 0)
+
                 next_layer++;
                 if (next_layer >= LAYER_CYCLE_END) { 
                     next_layer = LAYER_CYCLE_START; 
@@ -146,27 +141,20 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             previous_base_layer = next_layer;
             layer_move(next_layer);
             
-            // Komentář: Událost zpracována, nepokračovat ve výchozím chování
+
             return true; 
         } 
-        
-        // ----------------------------------------------------------------------
-        // Komentář: REŽIM 0: NORMÁLNÍ FUNKCE (okno je zavřené)
-        // ----------------------------------------------------------------------
+
 
         if (clockwise) {
-            // Komentář: Otáčení doprava -> Zvýšit hlasitost
             tap_code(KC_LEFT);
         } else {
-            // Komentář: Otáčení doleva -> Snížit hlasitost
             tap_code(KC_RIGHT);
         }
         
-        // Komentář: Událost zpracována, nepokračovat ve výchozím chování
         return true; 
     }
     
-    // Komentář: V případě, že to není index 0, necháme QMK, ať to zpracuje dál
     return false; 
 }
 
@@ -174,13 +162,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { // definice vrstev
 
-// Definice vrstev pro keymap.c s KAZDOU klávesou nastavenou na KC_A.
 
-// Definice vrstev pro keymap.c pro 4x4 makropad.
-// Všechny klávesy jsou nastaveny na KC_A (No Operation).
 
-// DŮLEŽITÉ: Nyní má layout 20 pozic (4 řádky * 5 sloupců)
-// POZOR: Musíš použít NOVÝ NÁZEV layoutu a PŘESNĚ 20 argumentů!
 
 [0] = LAYOUT_martin_4x4( 
     KC_A, KC_A, KC_A, KC_A, KC_LAYER_MODE,

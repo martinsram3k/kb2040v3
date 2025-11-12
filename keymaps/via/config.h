@@ -29,11 +29,6 @@
 
 #define WS2812_DI_PIN GP9
 #define RGBLIGHT_LED_COUNT 6 // Počet LED diod na klávesnici
-/*
- * POZNÁMKA K NAPÁJENÍ: 
- * Ujisti se, že zdroj raw-LED zvládne napájet 6 diod. 
- * Max spotřeba: 6 * 60mA = 360mA při plném jasu (bílá).
- */
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4 // Počet vrstev pro dynamickou klávesnici
 
